@@ -1,19 +1,17 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+
 import { Link } from "react-router-dom"
 
+import { useContext } from "react"
 
-const getPostsUrl = "https://jsonplaceholder.typicode.com/posts"
+import PostsContext from "../contexts/PostsContext"
+
+
+
 
 
 function PostsList() {
-  const [postsList, setPostsList] = useState([])
 
-  useEffect(() => {
-    axios.get(getPostsUrl)
-      .then(res => setPostsList(res.data))
-      .catch(err => console.error(err))
-  }, [])
+  const postsList = useContext(PostsContext)
 
   return (
     <>
