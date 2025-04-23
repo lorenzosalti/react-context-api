@@ -1,4 +1,8 @@
+// react router import
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+// context import
+import PostsContext from "./contexts/PostsContext"
 
 // pages import
 import HomePage from "./pages/HomePage"
@@ -14,16 +18,18 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/posts" element={<PostsPage />} />
-          <Route path="/posts/:id" element={<PostDetail />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <PostsContext.Provider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/posts" element={<PostsPage />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </PostsContext.Provider>
   )
 }
 
