@@ -1,9 +1,9 @@
 
-import { Link } from "react-router-dom"
-
 import { useContext } from "react"
 
 import PostsContext from "../contexts/PostsContext"
+
+import PostCard from "./PostCard"
 
 
 
@@ -16,9 +16,7 @@ function PostsList() {
   return (
     <>
       <ul className="container">
-        {postsList.map(post => <li key={post.id}>
-          <Link to={`/posts/${post.id}`}><h4>{post.title}</h4></Link>
-        </li>)}
+        {postsList.map(post => <PostCard key={post.id} post={post} />)}
       </ul>
     </>
   )
